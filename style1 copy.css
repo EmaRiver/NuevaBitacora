@@ -88,23 +88,28 @@ img { width: 100%; height: auto; }
 .baner3 {
   object-fit: cover;
   width: 100%;
-  height: auto;      /* Se adapta a la proporción */
+  height: 100%;      /* Se adapta a la proporción */
   padding: 1%;       /* Espaciado flexible */
-  display: block;    /* Asegura que no se comporten como inline */
+  display: flex;    /* Asegura que no se comporten como inline */
 }
 .baner4 {
   object-fit: cover;
   width: 100%;
-  height: auto;      /* Se adapta a la proporción */
+  height: 100%;      /* Se adapta a la proporción */
   display: block;
-  margin-bottom: -40%   /* Asegura que no se comporten como inline */
+  margin-bottom: -40%
+  z-index: auto;
+  position: absolute;
+   /* Asegura que no se comporten como inline */
 }
 .baner5 {
   object-fit: cover;
   width: 100%;
-  height: auto;      /* Se adapta a la proporción */
+  height: 100%;      /* Se adapta a la proporción */
  display: block;
   margin-bottom: -40%;
+  z-index: auto;
+  position: absolute;
 
       /* Asegura que no se comporten como inline */
 }
@@ -112,7 +117,7 @@ img { width: 100%; height: auto; }
 /* Responsividad con media queries */
 @media (max-width: 1024px) {
   .baner1 {
-    padding: 3%;
+    padding: 1%;
   }
 
 
@@ -124,7 +129,7 @@ img { width: 100%; height: auto; }
   .baner3,
   .baner4,
   .baner5 {
-    padding: 2%;
+    padding: 1%;
   }
 
   
@@ -148,9 +153,9 @@ img { width: 100%; height: auto; }
 .baner-container {
   position: relative;      /* contenedor base */
   width: 100%;
-  max-width: 1200px;       /* opcional, para limitar */
-  margin: auto;
-  overflow: hidden;
+  max-width: 100%;    
+  height: auto;
+    object-fit: cover;
 }
 
 .baner {

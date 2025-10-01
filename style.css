@@ -1,310 +1,291 @@
 /* ----------------------------- */
-/*          ESTILOS GENERALES     */
+/*          RESET                */
+/* ----------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+/* ----------------------------- */
+/*          VARIABLES            */
+/* ----------------------------- */
+@property --maria {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #ff6f91;
+}
+@property --tamaño {
+    syntax: "<length>";
+    inherits: false;
+    initial-value: 2rem;
+}
+/* ----------------------------- */
+/*        TIPOGRAFIA UNIVERSAL   */
+/* ----------------------------- */
+
+body, h1, h2, h3, h4, h5, h6, p, a, button {
+    font-family: "Zain", sans-serif;}
+/* ----------------------------- */
+/*       ESTILOS GENERALES       */
 /* ----------------------------- */
 body {
-    background-color: #1b1b2f; /* fondo más profundo */
+    background-color: #1b1b2f;
     margin: 0;
     padding: 0;
+    font-family: "Zain", sans-serif;
 }
-
 h1 {
-    font-size: var(--tamaño);
-    color: #e8e8f0; /* contraste suave y legible */
-    margin-bottom: 1.2rem;
-    padding-bottom: 0.5rem;
+    font-size: 2rem;
+    color: #e8e8f0;
+    margin-bottom: 1rem;
     text-align: center;
-    flex-wrap: wrap;
 }
-
 h2 {
-    font-size: 3rem;
+     font-size: 1.6rem;
     color: #f0f0f5;
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
     text-align: center;
     flex-wrap: wrap;
 }
-
 h3 {
-    font-size: 1.3rem;
-    color: #b8b8c8; /* subtítulos más suaves */
+      font-size: 1.2;
+    color: #b8b8c8; 
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
     display: inline-block;
     text-align: center;
 }
-
-img {
-    width: 100%;
-    height: auto;
-}
+img { width: 100%; 
+    height: auto; }
 
 /* ----------------------------- */
-/*         VARIABLES CSS          */
+/*         CLASES SUELTAS        */
 /* ----------------------------- */
-@property --maria {
-    syntax: "<color>";
-    inherits: true;
-    initial-value: #ff6f91; /* rosa vibrante para acentos */
-}
-  
- 
-@property --tamaño {
-    syntax: "<length>";
-    inherits: false;
-    initial-value: 50px;
-}
+.tx1 { color: blueviolet; }
+.diferente { font-size: 2.5rem; }
+.otro { text-shadow: 2px 2px 2px rgba(0,0,0,0.6); }
 
 /* ----------------------------- */
-/*         CONTENEDORES           */
+/*        CONTENEDORES           */
 /* ----------------------------- */
 .contenedor1 {
-    width: 80%;
-    height: 70%;
-    background-color: #2b2b44; /* más armonioso con las tarjetas */
-    display: flex;
-    margin: 0 auto;
-}
-
-.contenedor1 img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding: 1%;
+    background-color: #2b2b44;
+    margin: 0 auto;
+    display: block;
 }
+.contenedor1 img { object-fit: cover;   width: 100%;
+    height: 100%; padding: 1%; }
 
 .contenedor2 {
-    width: auto;
-    height: auto;
+    width: 100%;
     background-color: #1b1b2f;
-    display: flex;
+    display: block;
+    text-align: center;
     margin: 0 auto;
-    justify-content: center;
 }
-
 .container-co {
     display: flex;
-    width: auto;
-    height: auto;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
     margin: 0 auto;
-    padding: 0 2rem;
-    flex-wrap: wrap;
     text-align: center;
 }
 
 .btn {
     display: inline-block;
-    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    background: #38385a;
     color: white;
-    background-color: #38385a;
-    padding: 0.8rem 2rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    border: none;
     cursor: pointer;
-    margin-top: 20%;
+    margin: 1rem auto;
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 12%;
-    margin-left: 30%;}
-
+}
 .btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px #c0a062;
+    box-shadow: 0 0 15px #c0a062;
 }
+
 .container {
-    background-color: #38385a; /* navbar con contraste agradable */
-    width: auto;
-    height: auto;
+    background-color: #38385a;
+    width: 100%;
     display: flex;
     margin: 0 auto;
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0;
+    padding: 0.5rem;
 }
-
 .menu {
     display: flex;
-    gap: 2rem;
-    list-style: none;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    margin: auto;
 }
-.baner{
-    width: 100%; height: 89%; display: block;
-}
+.baner { width: 100%;
+     height: auto; 
+     display: block; }
 .enlace {
-    color: #d0d0e0; /* enlaces más suaves y legibles */
-    position: relative;
+    color: #d0d0e0;
     text-decoration: none;
+    font-size: 1.2rem;
     transition: color 0.3s ease;
-    font-size: 1.6rem;
-    text-align: center;
 }
-
-.enlace:hover {
-    color: #ff6f91; /* acento rosa al pasar mouse */
-}
+.enlace:hover { color: #ff6f91; }
 
 /* ----------------------------- */
-/*         SECCIONES              */
+/*         SECCIONES             */
 /* ----------------------------- */
 .carac, .carac1 {
-    padding: 5rem 6rem;
-    background-color: #1b1b2f; /* fondo uniforme y armonioso */
+    padding: 2rem 3rem;
+    background-color: #1b1b2f;
 }
 
 /* ----------------------------- */
 /*           CAJAS               */
 .caja, .cajas {
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-    height: 200px;
-    background-color: var(--maria); /* acento principal */
+    margin: 1rem auto;
+    width: 90%;
+    height: 150px;
+    background-color: var(--maria);
 }
-
-.cajas {
-    background-color: #50fa7b; /* verde vibrante para destacar */
-}
-
+.cajas { background-color: #50fa7b; }
 .mascar {
     mask-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png);
     mask-repeat: no-repeat;
-    margin-top: 12%;
+    margin-top: 1rem;
 }
 
 /* ----------------------------- */
-/*          TARJETAS              */
+/*          TARJETAS             */
 .container2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 5rem;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1rem;
 }
-
 .tarjeta {
-    background-color: #2b2b44; /* armoniza con contenedores */
-    padding: 2rem;
+    background-color: #2b2b44;
+    padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
-
 .tarjeta:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* sombra más profunda */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
-
-.icono {
-    font-size: 2.5rem;
-    color: #ff6f91; /* acento rosa */
-    margin-bottom: 1.5rem;
-}
-
-.titulo-tarjeta {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #f0f0f5;
-}
-
-.texto, .texto2 {
-    color: #c8c8e0;
-    font-size: 1rem;
-    text-align: justify;
-}
+.icono { font-size: 2rem; color: #ff6f91; margin-bottom: 1rem; }
+.titulo-tarjeta { font-size: 1.2rem; color: #f0f0f5; margin-bottom: 0.5rem; }
+.texto, .texto2 { font-size: 0.95rem; color: #c8c8e0; text-align: justify; }
 
 /* ----------------------------- */
-/*            FOOTER              */
+/*           FOOTER              */
 footer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    padding: 1%;
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
     text-align: center;
-    font-size: 17px;
-    background-color: #38385a; /* acento rosa */
+    font-size: 0.9rem;
+    background-color: #38385a;
     color: #ff6f91;
-    margin: 0 auto;
 }
 
 /* ----------------------------- */
-/*           NAVBAR               */
+/*           NAVBAR              */
 nav {
     background-color: #38385a;
     color: #e8e8f0;
-    padding: 20px;
+    padding: 1rem;
     position: sticky;
-    overflow: hidden;
     top: 0;
 }
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin: 10px;
-}
-
+nav ul { list-style: none;
+     padding: 0;
+      margin: 0;
+       text-align: center; }
+nav ul li {  margin: 0.1rem 0; }
 nav li a {
     color: #e8e8f0;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
-
-nav li a:hover {
-    color: #ff6f91;
-}
+nav li a:hover { color: #ff6f91; }
 
 /* ----------------------------- */
-/*          CLASES VARIAS         */
-.padre {
-    font-size: 20px;
-    text-align: center;
-}
-
-.hijo {
-    font-size: 2em;
-    color: #d0d0e0;
-    text-align: center;
-}
-
-.remex {
-    font-size: 2rem;
-    color: #92a4d4; /* acento azul */
-    text-align: center;
-}
-
-.vh {
-    height: 50vh;
-    background-color: #6a4c9f; /* fondo más artístico */
-    text-align: center;
-}
-
-.vw {
-    width: 75vw;
-    background-color: #8be9fd; /* acento brillante */
-    text-align: center;
-}
+/*          CLASES VARIAS        */
+.padre { font-size: 1rem; text-align: center; }
+.hijo { font-size: 1.5rem; color: #d0d0e0; text-align: center; }
+.remex { font-size: 1.2rem; color: #92a4d4; text-align: center; }
+.vh { height: auto; background-color: #6a4c9f; text-align: center; }
+.vw { width: 100%; background-color: #8be9fd; text-align: center; }
 
 /* ----------------------------- */
-/*          MEDIA QUERIES         */
-@media (max-width: 700px) {
-    nav ul li {
-        display: block;
-        margin: 10px;
-    }
+/*          MEDIA QUERIES        */
+/* ----------------------------- */
+
+/* Tablet */
+@media (min-width: 600px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .diferente { font-size: 4rem; }
+    .container-co { flex-direction: row; flex-wrap: wrap; }
+    .menu { flex-direction: row; justify-content: center; gap: 2rem; }
+    .container2 { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: row; justify-content: space-around; }
 }
 
-@media (max-width: 600px) {
-    .cajas {
-        color: #1b1b2f;
-        background-color: #50fa7b;
+/* Escritorio */
+@media (min-width: 1024px) {
+    h1 { font-size: var(--tamaño); }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 1.3rem; }
+    .diferente { font-size: 6rem; }
+    .contenedor1 {
+        display: flex;
+        width: 80%;
+        height: 70%;
     }
+    .btn { margin-top: 20%; margin-bottom: 12%; margin-left: 30%; }
+    .container2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 5rem;
+    }
+    nav ul li { display: inline; margin: 0 15px; }
+    .vh { height: 50vh; }
+    .vw { width: 75vw; }
 }

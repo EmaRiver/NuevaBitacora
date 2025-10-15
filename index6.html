@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!---Emanuel Rivera Esquivel --> 
+<!--- 248032--->
+<!--- HTML 5 CSS 3 ADAPTATIVO--->
+<html lang="es">
+    <link rel="icon" href="img/LOGPOOOGOG4.ico" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <title>JS</title>
+    <style>
+        button{
+            padding: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            
+        }
+   
+    .container {
+      background-color: #38385a;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 2px 8px #00000033;
+    }
+
+    /* --- Contenedor interno --- */
+    .container-co {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    /* --- Navegación --- */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;"
+       font-family: "Zain", sans-serif;
+      font-size: 1rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #ecb040;
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="container-co">
+      <nav>
+        <ul>
+          <li><a href="index.html">Unidad 1</a></li>
+          <li><a href="index2.html">Unidad 2</a></li>
+          <li><a href="index5.html">Unidad 3</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+    <h1 class="">Hola Normalize.css</h1>
+    <p>Texto se verá igual en navegadores modernos.</p>
+    <button>Botón estandar</button>
+   
+</body>
+<script>
+    //Este es un comentario
+    console.log("El Script se esta ejecutando");
+    document.write("<h2>Contenido agregado en JS</h2>")
+ 
+    let nombre;
+    nombre = "Juan Jose David"
+ 
+    var edad = 32;
+    const CURP = "Ejemplo CURP"
+ 
+    var entero = 10;
+    var decimal = 3.1416;
+    var suma = entero + decimal
+ 
+    //Estructuras de control
+    var calificaciónDeDamaris = 10;
+ 
+    if (calificaciónDeDamaris >= 10){
+        console.log("Aprobada")
+    }
+    else{
+        console.log("Reprobada")
+    }
+     document.getElementById("btnPrueba").addEventListener("click", () => {
+      alert(`Hola ${nombre}, tu edad es ${edad}`);
+    });
+</script>
+</html>

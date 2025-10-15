@@ -246,3 +246,14 @@ footer { display: flex; gap: 1rem; padding: 2rem; text-align: center; font-size:
     .vh { height: 50vh; }
     .vw { width: 75vw; }
 }
+.botones {
+  display: flex;
+  justify-content: center; /* centra los botones horizontalmente */
+  align-items: center;
+
+}
+
+
+  .btn:hover {
+    background-color: #c0a062;
+  }

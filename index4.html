@@ -1,16 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-            <link rel="stylesheet" href="style copy.css">
+<!---Emanuel Rivera Esquivel --> 
+<!--- 248032--->
+<!--- HTML 5 CSS 3 ADAPTATIVO--->
+<html lang="es">
+    <link rel="icon" href="img/LOGPOOOGOG4.ico" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> <!-- Responsive -->
+  <title>Juego Estructuras </title>
+  <link rel="stylesheet" href="style1 copy.css"> 
 <body>
-        <h1>en construccion</h1>
-<div> 
-    
-</div>
+ <header class="container">
+        <div class="container-co">
+       <nav>
+        <ul>
+            <li><a href="index.html" >Unidad 1</a></li>
+            <li><a href="index2.html">Unidad 2</a></li>
+            <li><a href="index5.html"> Unidad 3</a></li>
+        </ul>
+    </nav>
+        </div>
+    </header>
+  <!-- CARD PRINCIPAL -->
+  <div class="base" > <!-- Contenedor principal -->
+    <h1>Juego: Estructuras de Control</h1>
+    <p>Haz clic en los botones para ejecutar cada estructura. Salida en pantalla y consola.</p>
+
+    <!-- BOTONES Y SELECT -->
+    <div class="controles">
+      <button id="btnIf">IF — Comprobar energía</button>
+
+      <select id="selectArma"> <!-- Select se usa para hacer una especie de menu despleghable que permite al usuario elegir alguna opcion-->
+        <option value="espada">Espada</option> <!-- value se usa parta obtener un valor actual en JS-->
+        <option value="arco">Arco</option>
+        <option value="baston">Bastón mágico</option>
+        <option value="pociones">Pociones arrojadizas</option>
+      </select>
+
+      <button id="btnSwitch">SWITCH — Usar arma</button>
+      <button id="btnFor">FOR — 3 rondas</button>
+      <button id="btnWhile">WHILE — Buscar 3 tesoros</button>
+      <button id="btnDoWhile">DO WHILE — Abrir cofre</button>
+      <button id="btnLimpiar" class="btn-secondary"> Limpiar</button>
+    </div>
+
+    <!-- AREA DE SALIDA -->
+    <div id="salida" class="impresion"></div>
+    <div class="nota">Nota: Esta es una version de prueba con ayuda de videos de youtube.</div>
+  </div>
+
+  <!-- SCRIPT JAVASCRIPT -->
+  <script>
+    // se declaran las variables con constante para que no se puedan reasingar despues de estar ya definidas 
+    const salidaEl = document.getElementById('salida');
+    const btnIf = document.getElementById('btnIf');
+    const btnSwitch = document.getElementById('btnSwitch');
+    const selectArma = document.getElementById('selectArma');
+    const btnFor = document.getElementById('btnFor');
+    const btnWhile = document.getElementById('btnWhile');
+    const btnDoWhile = document.getElementById('btnDoWhile');
+    const btnLimpiar = document.getElementById('btnLimpiar');
+
+    // Función para mostrar texto en pantalla y consola
+    function logSalida(text) {
+      console.log(text);                   // Mostrar en consola
+      salidaEl.textContent += text + '\n'; // Agregar al área de salida
+    }
+
+    // BOTON IF
+    btnIf.onclick = function() {
+      var energia = Math.floor(Math.random() * 101); // asigna una variable con un número aleatorio 0 al 100 
+      logSalida(' IF: Energía del jugador: ' + energia);  
+      if (energia >= 50) {
+        logSalida('→ Energía suficiente para luchar.'); // Si la energia del jugador es superio a 50 quiere decir que se imprimira if 
+      } else {
+        logSalida('→ El jugador debe descansar.'); // si no se imprimira else 
+      }
+      logSalida(''); // espacio 
+    };
+
+    // BOTON SWITCH
+    btnSwitch.onclick = function() {
+      var arma = selectArma.value; // Valor seleccionado del select
+      logSalida(' SWITCH: Arma seleccionada:' + arma); // Aqui imprimira el texto mas el arma seleccionada en cada caso 
+      switch(arma) {
+        case 'espada': logSalida('→ Ataque cuerpo a cuerpo con espada.'); break;
+        case 'arco': logSalida('→ Disparo a distancia con arco.'); break;
+        case 'baston': logSalida('→ Lanza hechizo con bastón mágico.'); break;
+        case 'pociones': logSalida('→ Lanza pociones arrojadizas.'); break;
+        default: logSalida('→ Ataque improvisado.'); break; // si no es ninguna saldra esta impresion
+      }
+      logSalida('');// espacio 
+    };
+
+    // BOTON FOR
+    btnFor.onclick = function() {
+      logSalida(' FOR: Simulando 3 combates:');
+      for(var ronda=1; ronda<=3; ronda++) {  // se ejecutara 3 veces de 1 al 3 donde cada ciclo representara una ronda del combate 
+         // Determina una variable que inicia con 1 y si pasa a 3 o a menos a tres las rondas se acumulan hasta que pasen esas 3 rondas 
+        var atacante = Math.random() < 0.5 ? 'jugador' : 'enemigo' ;
+
+       if(atacante ==='jugador') { // === se usa para comparar una igualdad exacta
+            logSalida('  - Ronda ' + ronda + ': El jugador ataca al enemigo.');
+        } else {
+            logSalida('  - Ronda ' + ronda + ': El enemigo ataca al jugador.');
+        }
+    }
+      // Mensaje final indicando que se completaron las 3 rondas//
+      logSalida('→ Fin de las rondas.'); 
+       logSalida('');// espacio 
+    };
+
+
+
+    // BOTON WHILE
+    btnWhile.onclick = function() {
+      logSalida(' WHILE: Buscando 3 tesoros:'); 
+      var tesoros=0, intentos=0; // se asigna variables de 0 a los intentos y tesoros 
+      var MAX_INT=20; // Evita bucle infinito poniendo como un maximo de 20 
+      while(tesoros<3 && intentos<MAX_INT) {  // quiere decir que si se encuentras menos de 3 tesoros se seguira buscando solo si no sobre pasa los intentos maximos , acumulando el numero de intentos
+        intentos++; // && se usa para combinar las condiciones 
+        if(Math.random()<0.6) { // se muestra una probabilidad del 60 % o menos 
+          tesoros++;
+          logSalida('  - Tesoro encontrado #' + tesoros); // se imprime el numero de tesoros encontrados 
+        } else {
+          logSalida('  - Intento ' + intentos + ': No hay tesoro.'); // No se encontró tesoro, imprime " no hay tesoros "
+        }
+      }
+          // Mensaje final según la cantidad de tesoros encontrados//
+      if(tesoros>=3) logSalida('→ Se encontraron los 3 tesoros.');  // si pasan de los 3 tesoros establecidos , imprimira que se encontrados los 3
+      else logSalida('→ Límite de intentos alcanzado.'); // si no  imprimira que pasaron los limites de intentos 
+      logSalida(''); // espacio 
+    };
+
+    // BOTON DO WHILE
+    btnDoWhile.onclick = function() {
+      logSalida('DO WHILE: Intentos para abrir cofre:');
+      var intentos=0, MAX_INT=10; // realiza con 3 varaibles una con los intentos en 0 y en otra donde muestra el limite de variables que se podra usar 
+      var abierto=false ; // muestra una variable donde especifica el estado del cofre que esta cerrado 
+      do {
+        intentos++; // se incrementara el valor cada vez que el ciclo se repita 
+        var exito = Math.random() < 0.3; 
+                // Math.random() genera un número entre 0 y 1
+                //  // Probabilidad 30% 
+        if(exito) { // si el intento da exito 
+          abierto = true; // el cofre es marcado como verdadero es decir se abrio 
+          logSalida('  - Intento ' + intentos + ': :) Cofre abierto.'); // imprimira el mueros de intentos y que el cofre esta ya abierto 
+          break;
+        } else {
+          logSalida('  - Intento ' + intentos + ': :( Cofre cerrado.'); // sino mostrara todos los intentos maximos e imprimira que el cofre no fue abierto 
+        }
+      } while(!abierto && intentos<MAX_INT);    // Repite el bucle mientras el cofre NO esté abierto y no se haya alcanzado el máximo de intentos
+    // && se usa para combinar ambas condiciones: deben cumplirse simultáneamente
+      logSalida(''); // espacio 
+    };
+
+    // BOTON LIMPIAR
+    btnLimpiar.onclick = function() { // el onclick hace que cuando el usuario haga click se ejecutara la funcion asignada 
+      salidaEl.textContent = ''; // Limpiar área de salida
+      console.clear();           // Limpiar consola
+    };
+
+    // Mensaje inicial
+    logSalida(' Pulsa los botones para ejecutar cada estructura ::)).');
+  </script>
+
 </body>
 </html>

@@ -1,12 +1,640 @@
 <!DOCTYPE html>
-<html lang="en">
-    
+<html lang="es">
+    <!---Emanuel Rivera Esquivel --> 
+<!--- 248032--->
+<!--- HTML 5 CSS 3 ADAPTATIVO--->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bitacora - codigos JV </title>
+    <style>
+      
+
+        /* ----------------------------- */
+        /*        TIPOGRAFIA UNIVERSAL   */
+        /* ----------------------------- */
+        body, h1, h2, h3, h4, h5, h6, p, a, button { 
+            font-family: "Zain", sans-serif; 
+        }
+
+        /* ----------------------------- */
+        /*       ESTILOS GENERALES       */
+        /* ----------------------------- */
+        body { 
+            background-color: #1b1b2f; 
+            color: #e8e8f0;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+        h1 { 
+            font-size: 2rem; 
+            color: #e8e8f0; 
+            margin-bottom: 1rem; 
+            text-align: center; 
+        }
+        h2 { 
+            font-size: 1.6rem; 
+            color: #f0f0f5; 
+            margin-bottom: 1rem; 
+            text-align: center; 
+            border-bottom: 2px solid #38385a;
+            padding-bottom: 0.5rem;
+        }
+        h3 { 
+            font-size: 1.2rem; 
+            color: #ff6f91; 
+            margin: 1rem 0;
+        }
+
+        /* ----------------------------- */
+        /*        CONTENEDORES           */
+        /* ----------------------------- */
+        .container-co { 
+            gap: 2rem; 
+            padding: 1rem; 
+            margin: 0 auto; 
+            max-width: 1200px;
+        }
+
+        /* ----------------------------- */
+        /*         SECCIONES             */
+        .carac { 
+            padding: 2rem; 
+            background-color: #2b2b44; 
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* ----------------------------- */
+        /*          BOTONES              */
+        /* ----------------------------- */
+        .btn { 
+            display: inline-block; 
+            background: #38385a; 
+            color: white; 
+            padding: 0.8rem 1.5rem; 
+            border-radius: 30px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin: 0.5rem;
+            transition: transform 0.3s, box-shadow 0.3s; 
+            border: none;
+            font-size: 1rem;
+        }
+        .btn:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 15px #c0a062; 
+            background-color: #ff6f91;
+        }
+
+        /* ----------------------------- */
+        /*          EXPLICACIONES        */
+        /* ----------------------------- */
+        .explicacion {
+            background-color: #38385a;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .explicacion h4 {
+            color: #8be9fd;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* ----------------------------- */
+        /*          FORMULARIOS          */
+        /* ----------------------------- */
+        input {
+            padding: 0.8rem;
+            margin: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #38385a;
+            background-color: #1b1b2f;
+            color: #e8e8f0;
+            width: 200px;
+            font-size: 1rem;
+        }
+
+        /* ----------------------------- */
+        /*          RESULTADOS           */
+        /* ----------------------------- */
+        .resultado {
+            background-color: #38385a;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            min-height: 20px;
+        }
+
+        /* ----------------------------- */
+        /*          CAJA EVENTOS         */
+        /* ----------------------------- */
+        .caja-evento {
+            background-color: #6a4c9f;
+            padding: 2rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: bold;
+        }
+        .caja-evento:hover {
+            background-color: #8be9fd;
+            color: #1b1b2f;
+        }
+
+        /* ----------------------------- */
+        /*          CONSOLA              */
+        /* ----------------------------- */
+        .consola {
+            background-color: #1e1e1e;
+            color: #50fa7b;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #44475a;
+        }
+
+        .mensaje-consola {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+  
+
+        /* ----------------------------- */
+        /*          BOTONES GRUPO        */
+        /* ----------------------------- */
+        .botones {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        /* ----------------------------- */
+        /*          MEDIA QUERIES        */
+        /* ----------------------------- */
+        @media (min-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .container-co { flex-direction: row; flex-wrap: wrap; }
+            .carac { flex: 1 1 calc(50% - 1rem); }
+        }
+
+        @media (min-width: 1024px) {
+            h1 { font-size: var(--tamaño); }
+            h2 { font-size: 3rem; }
+            .carac { flex: 1 1 calc(33.333% - 1rem); }
+        }
+      nav {
+    background-color: #38385a;
+    color: #e8e8f0;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+nav ul { list-style: none;
+     padding: 0;
+      margin: 0;
+       text-align: center; }
+nav ul li {  margin: 0.1rem 0; }
+nav li a {
+    color: #e8e8f0;
+    text-decoration: none;
+    font-size: 1rem;
+}
+nav li a:hover { color: #ff6f91; }
+        .container {
+    background-color:#38385a;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem;
+}
+
+    </style>
 </head>
+  <header class="container">
+        <div class="container-co">
+            <nav>
+                <ul>
+           <li><a href="index.html" >Unidad 1</a></li>
+            <li><a href="index2.html">Unidad 2</a></li>
+            <li><a href="index3.html"> Unidad 3 </a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 <body>
-        <h1>en construccion</h1>
+    <div class="container-co">
+        <h1>CODIGOS JAVA</h1>
+        
+        <!-- FUNCIONES -->
+        <section class="carac">
+            <h2>Funciones</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué son las funciones?</h4>
+                <p>Las funciones son bloques de código reutilizables que realizan una tarea específica. Permiten organizar el código y evitar repetir las mismas instrucciones.</p>
+                
+                <h4>¿Para qué sirven?</h4>
+                <p>- Reutilizar código<br>- Organizar y estructurar programas<br>- Facilitar el mantenimiento<br>- Dividir problemas complejos en partes más pequeñas</p>
+            </div>
+
+            <input type="text" id="nombreInput" placeholder="Escribe tu nombre">
+            <div class="botones">
+                <button class="btn" id="saludarBtn">Saludar</button>
+            </div>
+            <div class="resultado" id="saludoResult"></div>
+        </section>
+
+        <!-- FUNCIONES QUE RETORNAN VALORES -->
+        <section class="carac">
+            <h2>Funciones que Retornan Valores</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué son?</h4>
+                <p>Funciones que devuelven un resultado usando la palabra clave <code>return</code>. Este valor puede almacenarse en variables o usarse directamente.</p>
+                
+                <h4>¿Para qué sirven?</h4>
+                <p>- Realizar cálculos y devolver resultados<br>- Procesar datos y retornar información<br>- Crear funciones utilitarias reutilizables<br>- Encapsular lógica compleja</p>
+            </div>
+
+            <input type="number" id="num1" placeholder="Número 1" value="5">
+            <input type="number" id="num2" placeholder="Número 2" value="3">
+            <div class="botones">
+                <button class="btn" id="sumarBtn">Sumar</button>
+                <button class="btn" id="multiplicarBtn">Multiplicar</button>
+            </div>
+            <div class="resultado" id="sumaResult"></div>
+        </section>
+
+        <!-- LLAMADA A FUNCIÓN -->
+        <section class="carac">
+            <h2>Llamada a Función</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué es?</h4>
+                <p>Es la acción de ejecutar una función escribiendo su nombre seguido de paréntesis. Si la función requiere parámetros, se pasan dentro de los paréntesis.</p>
+                
+                <h4>¿Para qué sirve?</h4>
+                <p>- Ejecutar el código dentro de una función<br>- Pasar datos a las funciones mediante parámetros<br>- Obtener resultados de funciones que retornan valores<br>- Controlar el flujo del programa</p>
+            </div>
+
+            <div class="botones">
+                <button class="btn" id="llamarBtn">Llamar función simple</button>
+                <button class="btn" id="llamarParamBtn">Llamar con parámetros</button>
+            </div>
+            <div class="resultado" id="llamadaResult"></div>
+        </section>
+
+        <!-- CONSOLELOG -->
+        <section class="carac">
+            <h2>Console.log()</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué es?</h4>
+                <p>Es una función que imprime mensajes en la consola del navegador. Es una herramienta fundamental para depurar código y entender qué está pasando en el programa.</p>
+                
+                <h4>¿Para qué sirve?</h4>
+                <p>- Depurar errores en el código<br>- Ver valores de variables en tiempo real<br>- Seguir el flujo de ejecución del programa<br>- Mostrar mensajes informativos<br>- Probar funciones rápidamente</p>
+            </div>
+
+            <input type="text" id="mensajeInput" placeholder="Escribe un mensaje para la consola">
+            <div class="botones">
+                <button class="btn" id="consoleBtn">Probar console.log()</button>
+                <button class="btn" id="limpiarConsolaBtn">Limpiar Consola</button>
+            </div>
+            <div class="resultado" id="consoleResult"></div>
+            
+            <h3>Consola Simulada:</h3>
+            <div class="consola" id="consolaOutput">
+                <div class="mensaje-consola">Consola iniciada. Usa los botones para probar.</div>
+            </div>
+        </section>
+
+        <!-- GETELEMENTBYID -->
+        <section class="carac">
+            <h2>GetElementById()</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué es?</h4>
+                <p>Es un método del DOM (Document Object Model) que permite seleccionar un elemento HTML específico usando su atributo ID.</p>
+                
+                <h4>¿Para qué sirve?</h4>
+                <p>- Acceder a elementos específicos de la página<br>- Modificar contenido HTML dinámicamente<br>- Cambiar estilos CSS desde JavaScript<br>- Agregar o quitar clases CSS<br>- Manipular atributos de elementos</p>
+            </div>
+
+            <p id="textoCambiable" style="padding: 1rem; background: #38385a; border-radius: 5px;">Este texto puede cambiar usando GetElementById</p>
+            <input type="text" id="nuevoTextoInput" placeholder="Nuevo texto para el párrafo">
+            <div class="botones">
+                <button class="btn" id="cambiarTextoBtn">Cambiar texto</button>
+                <button class="btn" id="cambiarColorBtn">Cambiar color</button>
+                <button class="btn" id="resetearBtn">Resetear</button>
+            </div>
+        </section>
+
+        <!-- ADDEVENTLISTENER -->
+        <section class="carac">
+            <h2>AddEventListener()</h2>
+            
+            <div class="explicacion">
+                <h4>¿Qué es?</h4>
+                <p>Es un método que permite "escuchar" eventos específicos en elementos HTML y ejecutar código cuando ocurren esos eventos.</p>
+                
+                <h4>¿Para qué sirve?</h4>
+                <p>- Responder a interacciones del usuario (clics, teclas)<br>- Crear interfaces interactivas<br>- Validar formularios en tiempo real<br>- Crear efectos visuales dinámicos<br>- Manejar diferentes tipos de eventos del navegador</p>
+            </div>
+
+            <div class="caja-evento" id="cajaEventos">
+                ¡Interactúa conmigo!<br>
+                (Clic, Doble clic, Mouse over)
+            </div>
+            <div class="resultado" id="eventoInfo">Aquí se mostrarán los eventos</div>
+            
+            <div class="botones">
+                <button class="btn" id="agregarEventoBtn">Agregar nuevo evento</button>
+            </div>
+        </section>
+    </div>
+
+   <script>
+       // ==================== FUNCIÓN PARA LA CONSOLA ====================
+function logConsola(mensaje) {
+    // Obtener el elemento HTML de la consola por su ID
+    const consola = document.getElementById('consolaOutput');
+    
+    // Crear una marca de tiempo en formato legible (horas:minutos:segundos)
+    const timestamp = new Date().toLocaleTimeString();
+    
+    // Crear el HTML para mostrar el mensaje con formato
+    // Aquí hay un error - falta el span con la clase timestamp
+    const mensajeHTML = `<div class="mensaje-consola"><span class="timestamp">[${timestamp}]</span> ${mensaje}</div>`;
+    
+    // Agregar el nuevo mensaje al contenido existente de la consola
+    consola.innerHTML += mensajeHTML;
+    
+    // Hacer scroll automáticamente hacia abajo para mostrar el mensaje más reciente
+    consola.scrollTop = consola.scrollHeight;
+    
+    // También imprimir en la consola real del navegador (F12 para ver)
+    console.log(mensaje);
+}
+
+// ==================== FUNCIONES BÁSICAS ====================
+// Definición de una función que recibe un parámetro 'nombre'
+// Las funciones son bloques de código reutilizables
+function mostrarSaludo(nombre) {
+    // Template string (texto entre comillas invertidas ``) permite incluir variables fácilmente
+    return `¡Hola ${nombre}! COMO ESTAS??`;
+}
+
+// Cuando el usuario hace clic en "Saludar"
+// addEventListener escucha el evento 'click' en el botón
+document.getElementById('saludarBtn').addEventListener('click', function() {
+    // Obtener el valor del input, si está vacío usar 'amigo/a' por defecto
+    // El operador || significa "OR" - si el primer valor es falso, usa el segundo
+    const nombre = document.getElementById('nombreInput').value || 'amigo/a';
+    
+    // LLAMAR a la función mostrarSaludo y guardar el resultado
+    const resultado = mostrarSaludo(nombre);
+    
+    // Mostrar el resultado en el elemento HTML
+    // textContent es más seguro que innerHTML para texto plano
+    document.getElementById('saludoResult').textContent = resultado;
+    
+    // Registrar en la consola lo que está pasando
+    logConsola(`Función ejecutada: mostrarSaludo("${nombre}")`);
+    logConsola(`Resultado: "${resultado}"`);
+});
+
+// ========== FUNCIONES QUE RETORNAN VALORES ==========
+// Función flecha compacta que SUMA dos números
+// => es una forma más moderna de escribir funciones
+function sumarNumeros(a, b) { 
+    return a + b; // La palabra 'return' devuelve el valor
+}
+
+// Función que MULTIPLICA dos números
+function multiplicarNumeros(a, b) { 
+    return a * b; 
+}
+
+// Evento para el botón de SUMAR
+document.getElementById('sumarBtn').addEventListener('click', function() {
+    // parseFloat convierte texto a número decimal (puede tener decimales)
+    // Si el input está vacío, parseFloat devuelve NaN (Not a Number), 
+    // entonces usamos || 0 para convertir NaN a 0
+    const num1 = parseFloat(document.getElementById('num1').value) || 0;
+    const num2 = parseFloat(document.getElementById('num2').value) || 0;
+    
+    // LLAMAR a la función sumarNumeros y guardar el resultado
+    const total = sumarNumeros(num1, num2);
+    
+    // Mostrar el resultado con formato en la página
+    document.getElementById('sumaResult').textContent = `Suma: ${num1} + ${num2} = ${total}`;
+    
+    // Registrar en consola
+    logConsola(`Función sumarNumeros(${num1}, ${num2}) retornó: ${total}`);
+});
+
+// Evento para el botón de MULTIPLICAR
+document.getElementById('multiplicarBtn').addEventListener('click', function() {
+    // Obtener y convertir los números 
+    const num1 = parseFloat(document.getElementById('num1').value) || 0;
+    const num2 = parseFloat(document.getElementById('num2').value) || 0;
+    
+    // LLAMAR a la función multiplicar
+    const total = multiplicarNumeros(num1, num2);
+    
+    // Mostrar resultado
+    document.getElementById('sumaResult').textContent = `Multiplicación: ${num1} × ${num2} = ${total}`;
+    
+    // Registrar en consola
+    logConsola(`Función multiplicarNumeros(${num1}, ${num2}) retornó: ${total}`);
+});
+
+// ================ LLAMADA A FUNCIÓN ================
+// Función SIN parámetros - se llama sin argumentos
+function funcionSimple() { 
+    return "¡Función ejecutada correctamente! Esta es una llamada a función."; 
+}
+
+// Función CON parámetros - necesita valores cuando se llama
+function funcionConParametros(nombre, edad) { 
+    return `Hola ${nombre}, tienes ${edad} años.`; 
+}
+
+// Evento para llamar función SIN parámetros
+document.getElementById('llamarBtn').addEventListener('click', function() {
+    // Esta es una LLAMADA A FUNCIÓN - ejecuta el código dentro de funcionSimple
+    const mensaje = funcionSimple();
+    
+    // Mostrar el resultado
+    document.getElementById('llamadaResult').textContent = mensaje;
+    
+    // Registrar en consola
+    logConsola("Llamada a funcionSimple()");
+});
+
+// Evento para llamar función CON parámetros
+document.getElementById('llamarParamBtn').addEventListener('click', function() {
+    // LLAMADA A FUNCIÓN pasando dos argumentos: "Usuario" y 25
+    const mensaje = funcionConParametros("Usuario", 25);
+    
+    // Mostrar resultado
+    document.getElementById('llamadaResult').textContent = mensaje;
+    
+    // Registrar en consola
+    logConsola('Llamada a funcionConParametros("Usuario", 25)');
+});
+
+// =============== IMPRIMIR EN CONSOLA ===============
+document.getElementById('consoleBtn').addEventListener('click', function() {
+    // Obtener mensaje del input o usar uno por defecto
+    const mensaje = document.getElementById('mensajeInput').value || "Mensaje de prueba";
+    
+    // console.log() imprime en la consola del navegador (F12)
+    console.log("=== DEMOSTRACIÓN CONSOLE.LOG ===");
+    console.log("Mensaje simple:", mensaje);
+    console.log("Objeto de ejemplo:", {nombre: "Juan", edad: 30});
+    
+    // También registrar en nuestra consola simulada
+    logConsola(`console.log("${mensaje}") ejecutado - Mira la consola real`);
+});
+
+// Evento para LIMPIAR la consola simulada
+document.getElementById('limpiarConsolaBtn').addEventListener('click', function() {
+    // Reemplazar todo el contenido de la consola con un mensaje inicial
+    document.getElementById('consolaOutput').innerHTML =
+        '<div class="mensaje-consola"><span class="timestamp">[00:00:00]</span> Consola limpiada</div>';
+    
+    // Registrar la acción
+    logConsola("Consola simulada limpiada");
+});
+
+// ================= GETELEMENTBYID ==================
+// Obtener una referencia al elemento que vamos a modificar
+// GetElementById selecciona UN elemento por su ID (debe ser único)
+const elementoTexto = document.getElementById('textoCambiable');
+
+// Guardar el estado original para poder resetear después
+const textoOriginal = elementoTexto.textContent;
+const colorOriginal = elementoTexto.style.color;
+
+// Evento para CAMBIAR el TEXTO usando GetElementById
+document.getElementById('cambiarTextoBtn').addEventListener('click', function() {
+    // Obtener el nuevo texto del input
+    const nuevoTexto = document.getElementById('nuevoTextoInput').value || "¡Texto cambiado con GetElementById!";
+    
+    // MODIFICAR el contenido del elemento usando la referencia que guardamos
+    elementoTexto.textContent = nuevoTexto;
+    
+    // Registrar en consola
+    logConsola(`Texto cambiado a "${nuevoTexto}"`);
+});
+
+// Evento para CAMBIAR el ESTILO usando GetElementById
+document.getElementById('cambiarColorBtn').addEventListener('click', function() {
+    // Modificar múltiples propiedades de estilo CSS
+    elementoTexto.style.color = "#ff6f91";        // Color del texto
+    elementoTexto.style.fontWeight = "bold";      // Texto en negrita
+    elementoTexto.style.fontSize = "1.2rem";      // Tamaño de fuente más grande
+    
+    // Registrar en consola
+    logConsola("Estilo del texto modificado");
+});
+
+// Evento para RESETEAR a los valores originales
+document.getElementById('resetearBtn').addEventListener('click', function() {
+    // Restaurar el texto original
+    elementoTexto.textContent = textoOriginal;
+    
+    // Restaurar los estilos originales
+    elementoTexto.style.color = colorOriginal;
+    elementoTexto.style.fontWeight = "";      // Cadena vacía = valor por defecto
+    elementoTexto.style.fontSize = "";        // Cadena vacía = valor por defecto
+    
+    // Registrar en consola
+    logConsola("Texto y estilo resetados");
+});
+
+// ================ ADDEVENTLISTENER =================
+// Obtener referencias a los elementos
+const caja = document.getElementById('cajaEventos');
+const info = document.getElementById('eventoInfo');
+
+// Variable para contar cuántos eventos han ocurrido
+let contadorEventos = 0;
+
+// EVENTO: CLIC SIMPLE
+// addEventListener("tipo-de-evento", función-que-se-ejecuta)
+caja.addEventListener('click', function() {
+    contadorEventos++;
+    info.textContent = `Evento: Click (Evento #${contadorEventos})`;
+    
+    // 'this' se refiere al elemento que disparó el evento (la caja)
+    this.style.backgroundColor = "#ff6f91";
+    
+    logConsola("Evento CLICK detectado");
+});
+
+// EVENTO: DOBLE CLIC
+caja.addEventListener('dblclick', function() {
+    contadorEventos++;
+    info.textContent = `Evento: Doble Click (Evento #${contadorEventos})`;
+    this.style.backgroundColor = "#50fa7b";
+    this.style.color = "#1b1b2f";
+    logConsola("Evento DOBLE CLICK detectado");
+});
+
+// EVENTO: MOUSE SOBRE EL ELEMENTO
+caja.addEventListener('mouseover', function() {
+    contadorEventos++;
+    info.textContent = `Evento: Mouse Over (Evento #${contadorEventos})`;
+    this.style.backgroundColor = "#8be9fd";
+    logConsola("Evento MOUSE OVER detectado");
+});
+
+// EVENTO: MOUSE SALE DEL ELEMENTO
+caja.addEventListener('mouseout', function() {
+    contadorEventos++;
+    info.textContent = `Evento: Mouse Out (Evento #${contadorEventos})`;
+    this.style.backgroundColor = "#6a4c9f";
+    this.style.color = "#e8e8f0";
+    logConsola("Evento MOUSE OUT detectado");
+});
+
+// EVENTO: AGREGAR UN NUEVO EVENTO DINÁMICAMENTE
+document.getElementById('agregarEventoBtn').addEventListener('click', function() {
+    // Agregar un evento para CLIC DERECHO (contextmenu)
+    caja.addEventListener('contextmenu', function(e) {
+        // Prevenir el comportamiento por defecto (el menú contextual del navegador)
+        e.preventDefault();
+        
+        contadorEventos++;
+        info.textContent = `Evento: Click Derecho (Evento #${contadorEventos})`;
+        this.style.backgroundColor = "#ffb86c";
+        logConsola("Nuevo evento de CLICK DERECHO agregado");
+    }, { once: true }); // 'once: true' hace que el evento solo se ejecute una vez
+    
+    logConsola("Evento dinámico agregado: Click derecho");
+});
+
+        // Mensaje inicial
+        logConsola("Página cargada y lista para usar.");
+    </script>
 </body>
 </html>

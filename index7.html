@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efecto Parallax</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        #parallax-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* Capas de fondo (se mueven más rápido) */
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        #layer1 {
+            z-index: 0;
+            background-image: url('img/Imagen2.png');
+        }
+        
+        #layer2 {
+            z-index: 2;
+            background-image: url('img/Imagen4.png');
+            margin-top: 5%;
+
+        }
+         #layer6 {
+            z-index: 1;
+            margin-top: 4%;
+            color: rgb(0, 64, 120);
+            font-size: 25px;
+            text-align: center;
+            margin-top: 27%;
+  font-family: "Righteous", sans-serif;
+        }
+        
+        #layer3 {
+            z-index: 3;
+            background-image: url('img/Imagen1.png');
+            margin-bottom: 19%;
+        }
+        
+        /* Capas con imágenes (se mueven más lento) */
+        .parallax-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #layer4 {
+            z-index: 5;
+        }
+        
+        #layer5 {
+            z-index: 4;
+        }
+        
+        .parallax-image img {
+            max-width: 100%;
+            max-height: 80%;
+        }
+        
+        .contenido {
+            padding: 50px 20px;
+            background-color: #0b4d67;
+            text-align: center;
+            min-height: 500px;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+        
+     
+    
+    </style>
+</head>
+
+<body> 
+    <div id="parallax-container">
+        <div id="layer1" class="parallax-layer"></div>
+        <div id="layer2" class="parallax-layer"></div>
+<div id="layer6" class="parallax-layer"> <h1> PARALLAX </h1></div>
+        <div id="layer3" class="parallax-layer"></div>
+        <div id="layer4" class="parallax-image">
+            <img src="img/Imagen5.png" alt="Imagen 5">
+        </div>
+        <div id="layer5" class="parallax-image">
+            <img src="img/imagen3.png" alt="Imagen 3">
+        </div>
+    </div>
+    
+ <section class="contenido">
+        <h2>Texto</h2>
+        <p>Es una ilustracion basa en el estilo subrealista y psicodelico </p>
+        <div style="height: 500px;"></div>
+        <p>Fin de la página.</p>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const layer1 = document.getElementById('layer1');
+            const layer2 = document.getElementById('layer2');
+            const layer3 = document.getElementById('layer3');
+            const layer4 = document.getElementById('layer4');
+            const layer5 = document.getElementById('layer5');
+            const layer6 = document.getElementById('layer6');
+
+            window.addEventListener("scroll", () => {
+                let scroll = window.scrollY;
+                
+                // Aplicar efecto parallax con diferentes velocidades
+                layer1.style.transform = `translateX(${scroll * 0.5}px)`;
+                layer2.style.transform = `translateY(${scroll * -0.1}px)`;
+                layer3.style.transform = `translateY(${scroll * 0.3}px)`;
+                layer6.style.transform = `translateY(${scroll * -0.08}px)`;
+                layer4.style.transform = `translateY(${scroll * 0.4}px)`;
+                layer5.style.transform = `translateY(${scroll * 0.4}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

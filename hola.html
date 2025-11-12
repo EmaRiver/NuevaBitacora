@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Galería: varias imágenes que se contraen</title>
+<style>
+  :root{
+    --transition: 300ms cubic-bezier(.2,.9,.3,1);
+    --img-contracted-width: 34%;
+    --img-scale-contracted: 0.62;
+    --card-radius: 10px;
+    --panel-bg: #fbfcfd;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    margin:0;
+    padding:20px;
+    background: linear-gradient(180deg,#eef4fb,#fff);
+    min-height:100vh;
+  }
+
+  /* Contenedor de la galería: grid de cards */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap:18px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  /* Cada card (misma estructura de antes, ahora reusable) */
+  .card{
+    border-radius:var(--card-radius);
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 24px rgba(10,20,40,0.06);
+    display:grid;
+    grid-template-columns: 1fr 0fr; /* por defecto imagen ocupa todo */
+    transition: grid-template-columns var(--transition);
+    min-height:260px;
+  }
+
+  .card.active{
+    grid-template-columns: var(--img-contracted-width) 1fr;
+  }
+
+  .image-area{ position:relative; overflow:hidden; height:100%; }
+  .image-area img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transform-origin:left center;
+    transition: transform var(--transition), filter var(--transition);
+    pointer-events:none; user-select:none;
+  }
+  .card.active .image-area img{
+    transform: scaleX(var(--img-scale-contracted));
+    filter: saturate(.94) contrast(.98);
+  }
+
+  .img-btn{
+    position:absolute; inset:0; border:0; background:transparent; cursor:pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .info-area{
+    padding:18px; background:var(--panel-bg);
+    opacity:0; transform: translateX(12px);
+    transition: opacity var(--transition), transform var(--transition);
+    display:flex; flex-direction:column; justify-content:center; gap:8px;
+  }
+  .card.active .info-area{ opacity:1; transform:none; }
+
+  .info-area h3{ margin:0; font-size:1.05rem; }
+  .info-area p{ margin:0; color:#333; line-height:1.4; font-size:.95rem; }
+  .meta{ color:#666; font-size:.85rem; }
+
+  .btn{ padding:8px 12px; border-radius:8px; border:1px solid #d0d7df; background:white; cursor:pointer; font-weight:600; }
+
+  /* icono cerrar en la esquina superior derecha de panel (opcional) */
+  .close-btn{
+    position:absolute; right:10px; top:10px; border:0; background:rgba(255,255,255,0.85);
+    padding:6px 8px; border-radius:8px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  /* Responsive: en pantallas pequeñas apilar verticalmente */
+  @media (max-width:720px){
+    .card{ grid-template-columns: 1fr; }
+    .card.active{ grid-template-columns: 1fr; }
+    .image-area{ height:200px; }
+    .card.active .image-area img{ transform: scaleX(.98); } /* menos compresión en móvil */
+  }
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center; margin:0 0 18px 0;">Galería — haz clic en una imagen</h2>
+
+<div class="gallery" id="gallery">
+  <!-- Card 1 -->
+  <article class="card" data-id="1">
+    <figure class="image-area">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="Mar y acantilado">
+      <button class="img-btn" aria-expanded="false" aria-controls="info-1" title="Mostrar info"></button>
+    </figure>
+    <section class="info-area" id="info-1" tabindex="-1" role="region" aria-labelledby="title-1">
+      <button class="close-btn" title="Cerrar" aria-label="Cerrar">✕</button>
+      <h3 id="title-1">Paisaje marino</h3>
+      <p>Hermoso acantilado con olas rompiendo. Ideal para fondo de pantalla o póster.</p>
+      <div class="meta">Resolución alta · Autor: Unsplash</div>
+      <div style="margin-top:8px;">
+        <button class="btn">Ver detalle</button>
+        <button class="btn">Descargar</button>
+      </div>
+    </section>
+  </article>
+
+  <!-- Card 2 -->
+  <article class="card" data-id="2">
+    <figure class="image-area">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="Bosque otoñal">
+      <button class="img-btn" aria-expanded="false" aria-controls="info-2" title="Mostrar info"></button>
+    </figure>
+    <section class="info-area" id="info-2" tabindex="-1" role="region" aria-labelledby="title-2">
+      <button class="close-btn" title="Cerrar" aria-label="Cerrar">✕</button>
+      <h3 id="title-2">Bosque en otoño</h3>
+      <p>Sendero con hojas amarillas y luz suave entre los árboles.</p>
+      <div class="meta">Perfecto para ilustraciones y fondos.</div>
+      <div style="margin-top:8px;">
+        <button class="btn">Ver detalle</button>
+        <button class="btn">Compartir</button>
+      </div>
+    </section>
+  </article>
+
+  <!-- Card 3 -->
+  <article class="card" data-id="3">
+    <figure class="image-area">
+      <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200&auto=format&fit=crop" alt="Ciudad nocturna">
+      <button class="img-btn" aria-expanded="false" aria-controls="info-3" title="Mostrar info"></button>
+    </figure>
+    <section class="info-area" id="info-3" tabindex="-1" role="region" aria-labelledby="title-3">
+      <button class="close-btn" title="Cerrar" aria-label="Cerrar">✕</button>
+      <h3 id="title-3">Ciudad nocturna</h3>
+      <p>Luces de la ciudad y calles mojadas que reflejan el color.</p>
+      <div class="meta">Uso libre · Fotógrafo: Unsplash</div>
+      <div style="margin-top:8px;">
+        <button class="btn">Ver detalle</button>
+        <button class="btn">Guardar</button>
+      </div>
+    </section>
+  </article>
+</div>
+
+<script>
+(function(){
+  const gallery = document.getElementById('gallery');
+  const cards = gallery.querySelectorAll('.card');
+
+  // Toggle behavior: al abrir un card, cerramos los demás
+  function abrirCard(card){
+    cards.forEach(c => {
+      if(c === card) {
+        c.classList.add('active');
+        const btn = c.querySelector('.img-btn');
+        if(btn) btn.setAttribute('aria-expanded','true');
+        const info = c.querySelector('.info-area');
+        if(info) info.focus({preventScroll:true});
+      } else {
+        c.classList.remove('active');
+        const btn = c.querySelector('.img-btn');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  function cerrarTodos(){
+    cards.forEach(c => {
+      c.classList.remove('active');
+      const btn = c.querySelector('.img-btn');
+      if(btn) btn.setAttribute('aria-expanded','false');
+    });
+  }
+
+  // Inicializar eventos por cada card
+  cards.forEach(card => {
+    const imgBtn = card.querySelector('.img-btn');
+    const info   = card.querySelector('.info-area');
+    const close  = card.querySelector('.close-btn');
+
+    if(imgBtn){
+      imgBtn.addEventListener('click', (e) => {
+        // si ya está activo, cerrarlo; si no, abrirlo y cerrar otros
+        if(card.classList.contains('active')) {
+          card.classList.remove('active');
+          imgBtn.setAttribute('aria-expanded','false');
+        } else {
+          abrirCard(card);
+        }
+      });
+      imgBtn.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          imgBtn.click();
+        }
+      });
+    }
+
+    if(close){
+      close.addEventListener('click', (e) => {
+        card.classList.remove('active');
+        const btn = card.querySelector('.img-btn');
+        if(btn) btn.setAttribute('aria-expanded','false');
+        // devolver foco al botón de imagen
+        if(imgBtn) imgBtn.focus();
+      });
+    }
+
+    // Opcional: si haces clic dentro del panel no se cierra (evitar burbujear)
+    info.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+  });
+
+  // Cerrar al hacer clic fuera de cualquier card
+  document.addEventListener('click', (e) => {
+    // si el click no está dentro de gallery, cerrar todos
+    if(!gallery.contains(e.target)){
+      cerrarTodos();
+    }
+  }, {capture:true});
+
+  // Cerrar con Escape (cierra todos)
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      cerrarTodos();
+    }
+  });
+
+  // Si quieres permitir abrir varios simultáneamente:
+  // - sustituye abrirCard(card) por: card.classList.toggle('active') en el handler de imgBtn
+  // - y elimina la parte que cierra los demás en abrirCard()
+})();
+</script>
+
+</body>
+</html>

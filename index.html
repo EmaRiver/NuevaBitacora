@@ -206,6 +206,55 @@ Altura, anchura, margen, padding. Ej: width: 50% → la mitad del contenedor pad
        <h1 class="h1">ESQUEMA DE LA BITACORA</h1>
     <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="650" src="https://embed.figma.com/board/sWXX7whZCOYrqsOAcPSHY3/Untitled?node-id=0-1&embed-host=share" allowfullscreen></iframe>
 <h1></h1>
+
+        <!-- Banner de cookies -->
+    <div class="cookiebanner" id="cookieBanner">
+        <div class="cookie-cont">
+            <div class="cookie-texto">
+                Utilizamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestro uso de cookies.
+            </div>
+            <div class="cookie-botones">
+                <button class="cookie-btn btn" id="rechazarBtn">Rechazar</button>
+                <button class="cookie-btn btn-aju" id="ajustesBtn">Ajustes</button>
+                <button class="cookie-btn btn-si" id="aceptarBtn">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const aceptarBtn = document.getElementById('aceptarBtn');
+            const rechazarBtn = document.getElementById('rechazarBtn');
+            const ajustesBtn = document.getElementById('ajustesBtn');
+            
+            // Mostrar banner si no hay preferencia guardada
+            if (!localStorage.getItem('cookiePref')) {
+                setTimeout(() => {
+                    cookieBanner.style.display = 'block';
+                }, 1000);
+            }
+            
+            // Aceptar cookies
+            aceptarBtn.addEventListener('click', function() {
+                localStorage.setItem('cookiePref', 'aceptadas');
+                cookieBanner.style.display = 'none';
+                alert('Cookies aceptadas');
+            });
+            
+            // Rechazar cookies
+            rechazarBtn.addEventListener('click', function() {
+                localStorage.setItem('cookiePref', 'rechazadas');
+                cookieBanner.style.display = 'none';
+                alert('Cookies rechazadas');
+            });
+            
+            // Ajustes de cookies
+            ajustesBtn.addEventListener('click', function() {
+                alert('Configuración de cookies');
+            });
+        });
+    </script>
     <footer>
         <p>&copy; 2025. Todos los derechos reservados.</p>
     </footer>
